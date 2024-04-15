@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TreeniTavoiteMobiiliAPP.UserPage">
+
+    <StackLayout>
+
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Timesheet app" HorizontalTextAlignment="Center" TextColor="White" FontSize="28"/>
+        </Frame>
+
+        <Button x:Name="paivitys_nappi" Text="Päivitä listaus"  />
+
+        
+
+        <Label x:Name="user_lataus" />
+
+        <ListView x:Name="userList" SelectionMode="Single" Margin="20, 0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+
+                        <ContentView Padding="3">
+                            <Frame BorderColor="Silver" Padding="2">
+
+                                <StackLayout BackgroundColor="AliceBlue" Orientation="Horizontal" Padding="0, 2">
+
+                                    
+
+                                    <Label Text="{Binding Etunim}"
+                                              
+                                               TextColor="Purple"
+                                               FontSize="22"
+                                               VerticalOptions="StartAndExpand" 
+                                           Margin="20, 0, 0, 0"/>
+
+
+                                    <Label Text="{Binding Sukunimi}"
+                                        
+                                         TextColor="Purple"
+                                           FontSize="22"
+                                           VerticalOptions="StartAndExpand"
+                                            HorizontalOptions="Center"
+                                             Margin="5, 0, 0, 0"/>
+
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Nappi joka johtaa työtehtäviin -->
+        <Button x:Name="navibutton" Text="Työtehtäviin"></Button>
+
+    </StackLayout>
+</ContentPage>
