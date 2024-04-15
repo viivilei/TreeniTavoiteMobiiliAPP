@@ -53,6 +53,7 @@
 
         <!-- Nappi joka johtaa työtehtäviin -->
         <Button x:Name="navibutton" Text="Tavoitteisiin" Clicked="navibutton_Clicked"></Button>
+        <Button x:Name="lisäysnappi" Text="Lisää uusi käyttäjä" Clicked="lisäysnappi_Clicked"></Button>
 
     </StackLayout>
 </ContentPage>

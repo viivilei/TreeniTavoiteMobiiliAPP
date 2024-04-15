@@ -10,6 +10,7 @@
 
 
         <Label Text="Valitse tavoite"></Label>
+       
 
 
         <Label x:Name="goal_lataus" />
@@ -28,8 +29,10 @@
         
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0, 40, 0, 30">
-            <Button x:Name="startbutton" Text="Aloita työ"></Button>
-            <Button x:Name="stopbutton" Margin="10, 0, 0, 0" Text="Lopeta työ"></Button>
+            <Button x:Name="startbutton" Text="Tee harjoitus"></Button>
+            <Button x:Name="reached" Margin="10, 0, 0, 0" Text="Tarkastele jo saavutettuja tavoitteita" Clicked="ReachedGoals_Clicked"></Button>
+            <Button x:Name="addnew" Margin="10, 0, 0, 0" Text="Aseta uusi tavoite" Clicked="addnew_Clicked"></Button>
+            <Button x:Name="SetReached" Margin="10, 0, 0, 0" Text="Merkitse saavutetuksi" Clicked="SetReached_Clicked"></Button>
         </StackLayout>
 
     </StackLayout>

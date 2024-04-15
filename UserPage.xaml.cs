@@ -71,5 +71,10 @@ namespace TreeniTavoiteMobiiliAPP
             }
 
         }
+
+        async void lisäysnappi_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddNewUser()); // Navigoidaan uudelle sivulle
+        }
     }
 }
