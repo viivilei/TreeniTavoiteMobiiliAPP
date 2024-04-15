@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TreeniTavoiteMobiiliAPP.GoalPage"
+             Title="GoalPage">
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Timesheet app" HorizontalTextAlignment="Center" TextColor="White" FontSize="28"/>
+        </Frame>
+
+
+        <Label Text="Valitse tavoite"></Label>
+
+
+        <Label x:Name="goal_lataus" />
+
+        <ListView x:Name="goalList" SelectionMode="Single">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+                    <TextCell Text="{Binding GoalName}"/>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+        
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0, 40, 0, 30">
+            <Button x:Name="startbutton" Text="Aloita työ"></Button>
+            <Button x:Name="stopbutton" Margin="10, 0, 0, 0" Text="Lopeta työ"></Button>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

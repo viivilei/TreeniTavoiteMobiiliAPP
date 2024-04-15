@@ -27,7 +27,7 @@
 
                                     
 
-                                    <Label Text="{Binding Etunim}"
+                                    <Label Text="{Binding Etunimi}"
                                               
                                                TextColor="Purple"
                                                FontSize="22"
@@ -52,7 +52,7 @@
         </ListView>
 
         <!-- Nappi joka johtaa työtehtäviin -->
-        <Button x:Name="navibutton" Text="Työtehtäviin"></Button>
+        <Button x:Name="navibutton" Text="Tavoitteisiin" Clicked="navibutton_Clicked"></Button>
 
     </StackLayout>
 </ContentPage>

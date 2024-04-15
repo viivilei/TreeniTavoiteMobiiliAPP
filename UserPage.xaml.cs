@@ -52,5 +52,24 @@ namespace TreeniTavoiteMobiiliAPP
 
         }
 
+        async void navibutton_Clicked(object sender, EventArgs e)
+        {
+
+            User us = (User)userList.SelectedItem;
+
+            if (us == null)
+            {
+                await DisplayAlert("Valinta puuttuu", "Valitse työntekijä.", "OK"); // (otsikko, teksti, kuittausnapin teksti)
+                                                                                    //return;
+            }
+            else
+            {
+
+                int id = us.UserId;
+                await DisplayAlert("Valittu käyttäjä", $"Valittu käyttäjä ID: {us.UserId}", "OK");
+                await Navigation.PushAsync(new GoalPage(id)); // Navigoidaan uudelle sivulle
+            }
+
+        }
     }
 }
