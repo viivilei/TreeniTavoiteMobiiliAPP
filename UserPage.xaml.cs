@@ -21,7 +21,7 @@ namespace TreeniTavoiteMobiiliAPP
 
         }
 
-        async void LoadDataFromRestAPI()
+        async void LoadDataFromRestAPI() //hakee käyttäjät backendistä
         {
             try
             {
@@ -32,8 +32,7 @@ namespace TreeniTavoiteMobiiliAPP
                 string json = await client.GetStringAsync("api/users");
 
                 IEnumerable<User> users = JsonConvert.DeserializeObject<User[]>(json);
-                // dataa -niminen observableCollection on alustettukin jo ylhäällä päätasolla että hakutoiminto,
-                // pääsee siihen käsiksi.
+                
                 dataa = new ObservableCollection<User>(users);
 
                 // Asetetaan datat näkyviin xaml tiedostossa olevalle listalle
@@ -57,24 +56,24 @@ namespace TreeniTavoiteMobiiliAPP
 
             User us = (User)userList.SelectedItem;
 
-            if (us == null)
+            if (us == null) //jos yhtään käyttäjää ei ole valittu tulee allaoleva ilmoitus
             {
-                await DisplayAlert("Valinta puuttuu", "Valitse työntekijä.", "OK"); // (otsikko, teksti, kuittausnapin teksti)
-                                                                                    //return;
+                await DisplayAlert("Valinta puuttuu", "Valitse työntekijä.", "OK"); 
+                                                                                    
             }
             else
             {
 
                 int id = us.UserId;
-                await DisplayAlert("Valittu käyttäjä", $"Valittu käyttäjä ID: {us.UserId}", "OK");
-                await Navigation.PushAsync(new GoalPage(id)); // Navigoidaan uudelle sivulle
+                await DisplayAlert("Valittu käyttäjä", $"Valittu käyttäjä ID: {us.UserId}", "OK"); //lähinnä debuggausta varten, varmistetaan että id kulkee mukana
+                await Navigation.PushAsync(new GoalPage(id)); // Navigoidaan uudelle sivulle tavoitteen lisäystä varten, mukana valitun käyttäjän userID
             }
 
         }
 
         async void lisäysnappi_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddNewUser()); // Navigoidaan uudelle sivulle
+            await Navigation.PushAsync(new AddNewUser()); // Navigoidaan uudelle sivulle, jolla voidaan tehdä uuden käyttäjän lisäys
         }
     }
 }

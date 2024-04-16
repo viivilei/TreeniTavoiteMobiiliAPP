@@ -12,20 +12,22 @@ public partial class AddNewGoal : ContentPage
 
     private int userId;
 
-    public AddNewGoal(int userId)
+    public AddNewGoal(int userId) 
     {
         InitializeComponent();
         this.userId = userId;
+        //varmistaa, että on varmasti oikea henkilö jolle lisätään uutta tavoitetta, voi myös laittaa kommentointiin koska tämä lähinnä debuggausta varten
         DisplayAlert("Valittu käyttäjä", $"Valittu käyttäjä ID: {userId}", "OK");
 
     }
 
     async void Button_Clicked(object sender, EventArgs e)
     {
+        //hakee tiedon tekstikentistä
         string goalName = goalNameEntry.Text;
         string notes = notesEntry.Text;
 
-        // Tässä voit tehdä logiikan uuden Goalin luomiseksi ja tallentamiseksi
+        // Tässä rakentuu uusi tavoite-olio
 
         Goal newGoal = new Goal
         {
@@ -48,20 +50,20 @@ public partial class AddNewGoal : ContentPage
 
             if (response.IsSuccessStatusCode)
             {
-                await DisplayAlert("Success", "Uusi Goal lisätty onnistuneesti", "OK");
-                // Voit lisätä tässä tarvittaessa muita toimintoja, esim. navigoida takaisin edelliselle sivulle
+                await DisplayAlert("Onnistui", "Uusi tavoite lisätty onnistuneesti", "OK");
+                
                 // Navigoidaan takaisin goal-listaukseen
                 
                 await Navigation.PopAsync();
             }
             else
             {
-                await DisplayAlert("Error", "Virhe uuden Goalin lisäämisessä", "OK");
+                await DisplayAlert("Virhe", "Virhe uuden tavoitteen lisäämisessä", "OK");
             }
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Error", "Virhe: " + ex.Message, "OK");
+            await DisplayAlert("Virhe", "Virhe: " + ex.Message, "OK");
         }
 
         

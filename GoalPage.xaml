@@ -5,15 +5,17 @@
              Title="GoalPage">
     <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Timesheet app" HorizontalTextAlignment="Center" TextColor="White" FontSize="28"/>
+            <Label Text="Treeni APP" HorizontalTextAlignment="Center" TextColor="White" FontSize="28"/>
         </Frame>
 
 
-        <Label Text="Valitse tavoite"></Label>
+        <Label Text="Käyttäjän tavoitteet" FontSize="Large" FontAttributes="Bold" VerticalOptions="StartAndExpand"></Label>
+        <Label Text="Tällä sivulla voit tarkastella asetettuja tavoitteita, lisätä uusia tavoitteita, merkitä tavoitteen saavutetuksi ja tehdä harjoituksia tavoitteiden saavuttamista varten" 
+       VerticalOptions="StartAndExpand" LineBreakMode="WordWrap"></Label>
+
+
+
        
-
-
-        <Label x:Name="goal_lataus" />
 
         <ListView x:Name="goalList" SelectionMode="Single">
             <ListView.ItemTemplate>

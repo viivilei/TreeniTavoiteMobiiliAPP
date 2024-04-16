@@ -51,8 +51,6 @@ namespace TreeniTavoiteMobiiliAPP
                 // Asetetaan suodatetut goalit n‰kyviin listalla
                 goalList.ItemsSource = userGoalsCollection;
 
-                // Tyhjennet‰‰n latausilmoitus label
-                goal_lataus.Text = "";
             }
             catch (Exception e)
             {
@@ -66,7 +64,7 @@ namespace TreeniTavoiteMobiiliAPP
         {
             // N‰ytet‰‰n valitun k‰ytt‰j‰n ID
             await DisplayAlert("Valittu k‰ytt‰j‰", $"Valittu k‰ytt‰j‰ ID: {eId}", "OK");
-            //await Navigation.PushAsync(new ReachedGoals());
+            //await Navigation.PushAsync(new ReachedGoals(eId));
         }
 
         // Metodi, joka suoritetaan kun "Aseta uusi tavoite" -nappia painetaan

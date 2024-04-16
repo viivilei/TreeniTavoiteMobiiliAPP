@@ -6,7 +6,7 @@
     <StackLayout>
 
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Timesheet app" HorizontalTextAlignment="Center" TextColor="White" FontSize="28"/>
+            <Label Text="Treeni APP" HorizontalTextAlignment="Center" TextColor="White" FontSize="28"/>
         </Frame>
 
         <Button x:Name="paivitys_nappi" Text="Päivitä listaus"  />
@@ -51,7 +51,6 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <!-- Nappi joka johtaa työtehtäviin -->
         <Button x:Name="navibutton" Text="Tavoitteisiin" Clicked="navibutton_Clicked"></Button>
         <Button x:Name="lisäysnappi" Text="Lisää uusi käyttäjä" Clicked="lisäysnappi_Clicked"></Button>
 

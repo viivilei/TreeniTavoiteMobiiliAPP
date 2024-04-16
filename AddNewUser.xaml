@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TreeniTavoiteMobiiliAPP.AddNewUser"
              Title="AddNewUser">
-    <VerticalStackLayout>
-        <Label 
-            Text="Täällä voit lisätä uuden käyttäjän"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <StackLayout Margin="20">
+        <Entry x:Name="FirstNameEntry" Placeholder="First Name" />
+        <Entry x:Name="LastNameEntry" Placeholder="Last Name" />
+        <Entry x:Name="EmailEntry" Placeholder="Email" />
+        <Button Text="Add User" Clicked="Button_Clicked"/>
+    </StackLayout>
 </ContentPage>
