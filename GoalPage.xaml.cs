@@ -133,7 +133,7 @@ namespace TreeniTavoiteMobiiliAPP
                 await DisplayAlert("Valittu k‰ytt‰j‰ ja tavoite", $"Valittu k‰ytt‰j‰ ID: {eId}\nValittu tavoite ID: {selectedGoal.GoalId}", "OK");
 
                 // Navigoidaan uudelle sivulle ja v‰litet‰‰n parametreina k‰ytt‰j‰n ID ja tavoitteen ID
-                //await Navigation.PushAsync(new AddExercise(eId, selectedGoal.GoalId));
+                await Navigation.PushAsync(new NewExc(eId, selectedGoal.GoalId));
             }
             else
             {

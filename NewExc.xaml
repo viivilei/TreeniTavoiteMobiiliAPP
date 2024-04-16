@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TreeniTavoiteMobiiliAPP.NewExc"
+             Title="NewExc">
+    
+        <StackLayout>
+            <!-- Lisää tekstiä -->
+            <Label Text="Täältä voit lisätä uuden harjoituksesi" 
+               HorizontalOptions="Center" 
+               VerticalOptions="CenterAndExpand" 
+               Margin="0,20,0,20" 
+               FontSize="20" />
+
+            <!-- Harjoituksen nimi -->
+            <Entry Placeholder="Harjoituksen nimi" x:Name="exerciseNameEntry" />
+
+            <!-- Muistiinpanot -->
+            <Editor Placeholder="Muistiinpanot" x:Name="notesEditor" />
+
+            <!-- Tallennuspainike -->
+            <Button Text="Tallenna" Clicked="Button_Clicked" />
+        </StackLayout>
+    </ContentPage>
