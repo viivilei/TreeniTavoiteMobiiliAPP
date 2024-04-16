@@ -121,5 +121,24 @@ namespace TreeniTavoiteMobiiliAPP
                 await DisplayAlert("Virhe", "Valitse ensin tavoite", "OK");
             }
         }
+
+        async void addexercise_Clicked(object sender, EventArgs e)
+        {
+            if (goalList.SelectedItem != null)
+            {
+                // Haetaan valitun tavoitteen tiedot
+                Goal selectedGoal = (Goal)goalList.SelectedItem;
+
+                // N‰ytet‰‰n valitun k‰ytt‰j‰n ja tavoitteen ID:t
+                await DisplayAlert("Valittu k‰ytt‰j‰ ja tavoite", $"Valittu k‰ytt‰j‰ ID: {eId}\nValittu tavoite ID: {selectedGoal.GoalId}", "OK");
+
+                // Navigoidaan uudelle sivulle ja v‰litet‰‰n parametreina k‰ytt‰j‰n ID ja tavoitteen ID
+                //await Navigation.PushAsync(new AddExercise(eId, selectedGoal.GoalId));
+            }
+            else
+            {
+                await DisplayAlert("Virhe", "Valitse ensin tavoite", "OK");
+            }
+        }
     }
 }
