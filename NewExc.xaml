@@ -3,36 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TreeniTavoiteMobiiliAPP.NewExc"
              Title="NewExc">
-    
-        <StackLayout>
-            <!-- Lisää tekstiä -->
-            <Label Text="Täältä voit lisätä uuden harjoituksesi" 
-               HorizontalOptions="Center" 
-               VerticalOptions="CenterAndExpand" 
-               Margin="0,20,0,20" 
-               FontSize="20" />
 
-            <!-- Harjoituksen nimi -->
+    <StackLayout>
+        <!-- Lisää tekstiä -->
+        <Label Text="Täältä voit lisätä uuden harjoituksesi" 
+           HorizontalOptions="Center" 
+           VerticalOptions="CenterAndExpand" 
+           Margin="0,20,0,20" 
+           FontSize="20" />
+        <Label x:Name="goalLabel" FontSize="Medium" />
+
+
+        <Button Text="Tarkastele aiempia harjoituksiasi" FontSize="14" WidthRequest="220" HeightRequest="40" Clicked="Button_Clicked_1"></Button>
+
+        <!-- Harjoituksen nimi -->
         <Entry Placeholder="Harjoituksen nimi"
-       x:Name="exerciseNameEntry"
-       PlaceholderColor="Gray"
-       BackgroundColor="#f0f0f0"
-       TextColor="Black"
-       FontSize="16"
-       Margin="0,10,0,0"
-       />
+           x:Name="exerciseNameEntry"
+           PlaceholderColor="Gray"
+           BackgroundColor="#f0f0f0"
+           TextColor="Black"
+           FontSize="16"
+           Margin="0,10,0,0" />
 
         <!-- Muistiinpanot -->
-            <Editor Placeholder="Muistiinpanot" x:Name="notesEditor" 
-                    PlaceholderColor="Gray"
-BackgroundColor="#f0f0f0"
-TextColor="Black"
-FontSize="16"
-Margin="0,10,0,0"
-                    
-                    />
+        <Editor Placeholder="Muistiinpanot" x:Name="notesEditor" 
+            PlaceholderColor="Gray"
+            BackgroundColor="#f0f0f0"
+            TextColor="Black"
+            FontSize="16"
+            Margin="0,10,0,0" />
 
-            <!-- Tallennuspainike -->
-            <Button Text="Tallenna" Clicked="Button_Clicked" />
-        </StackLayout>
-    </ContentPage>
+        <!-- Tallennuspainike -->
+        <Button Text="Tallenna" Clicked="Button_Clicked" />
+        <!-- Uusi painike "Katsokaikki" -->
+       
+    </StackLayout>
+    
+</ContentPage>
