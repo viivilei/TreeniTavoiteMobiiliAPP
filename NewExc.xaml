@@ -13,10 +13,24 @@
                FontSize="20" />
 
             <!-- Harjoituksen nimi -->
-            <Entry Placeholder="Harjoituksen nimi" x:Name="exerciseNameEntry" />
+        <Entry Placeholder="Harjoituksen nimi"
+       x:Name="exerciseNameEntry"
+       PlaceholderColor="Gray"
+       BackgroundColor="#f0f0f0"
+       TextColor="Black"
+       FontSize="16"
+       Margin="0,10,0,0"
+       />
 
-            <!-- Muistiinpanot -->
-            <Editor Placeholder="Muistiinpanot" x:Name="notesEditor" />
+        <!-- Muistiinpanot -->
+            <Editor Placeholder="Muistiinpanot" x:Name="notesEditor" 
+                    PlaceholderColor="Gray"
+BackgroundColor="#f0f0f0"
+TextColor="Black"
+FontSize="16"
+Margin="0,10,0,0"
+                    
+                    />
 
             <!-- Tallennuspainike -->
             <Button Text="Tallenna" Clicked="Button_Clicked" />

@@ -2,50 +2,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TreeniTavoiteMobiiliAPP.UserPage">
+   
 
     <StackLayout>
 
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Treeni APP" HorizontalTextAlignment="Center" TextColor="White" FontSize="28"/>
+        <Frame Padding="24" CornerRadius="0">
+            <Label Text="Treeni APP" HorizontalTextAlignment="Center" TextColor="Black" FontSize="34" FontAttributes="Bold,Italic"/>
         </Frame>
-
-        <Button x:Name="paivitys_nappi" Text="Päivitä listaus"  />
-
-        
 
         <Label x:Name="user_lataus" />
 
-        <ListView x:Name="userList" SelectionMode="Single" Margin="20, 0">
+
+
+        <ListView x:Name="userList" SelectionMode="Single">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-
-                        <ContentView Padding="3">
-                            <Frame BorderColor="Silver" Padding="2">
-
-                                <StackLayout BackgroundColor="AliceBlue" Orientation="Horizontal" Padding="0, 2">
-
-                                    
-
-                                    <Label Text="{Binding Etunimi}"
-                                              
-                                               TextColor="Purple"
-                                               FontSize="22"
-                                               VerticalOptions="StartAndExpand" 
-                                           Margin="20, 0, 0, 0"/>
-
-
-                                    <Label Text="{Binding Sukunimi}"
-                                        
-                                         TextColor="Purple"
-                                           FontSize="22"
-                                           VerticalOptions="StartAndExpand"
-                                            HorizontalOptions="Center"
-                                             Margin="5, 0, 0, 0"/>
-
-                                </StackLayout>
-                            </Frame>
-                        </ContentView>
+                        <StackLayout Orientation="Horizontal"
+                     BackgroundColor="{Binding BackgroundColor}"
+                     Padding="10"
+                     Margin="5"
+                     VerticalOptions="CenterAndExpand">
+                            <Label Text="{Binding Etunimi}" 
+                           HorizontalOptions="Start"
+                           VerticalOptions="CenterAndExpand"
+                           FontSize="Medium"
+                           Margin="0, 0, 5, 0"/>
+                            <Label Text="{Binding Sukunimi}" 
+                           HorizontalOptions="Start"
+                           VerticalOptions="CenterAndExpand"
+                           FontSize="Medium"/>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

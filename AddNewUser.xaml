@@ -4,9 +4,21 @@
              x:Class="TreeniTavoiteMobiiliAPP.AddNewUser"
              Title="AddNewUser">
     <StackLayout Margin="20">
-        <Entry x:Name="FirstNameEntry" Placeholder="First Name" />
-        <Entry x:Name="LastNameEntry" Placeholder="Last Name" />
-        <Entry x:Name="EmailEntry" Placeholder="Email" />
-        <Button Text="Add User" Clicked="Button_Clicked"/>
+        <Entry x:Name="FirstNameEntry" Placeholder="Etunimi" PlaceholderColor="Gray"
+BackgroundColor="#f0f0f0"
+TextColor="Black"
+FontSize="16"
+Margin="0,10,0,0"/>
+        <Entry x:Name="LastNameEntry" Placeholder="Sukunimi" PlaceholderColor="Gray"
+BackgroundColor="#f0f0f0"
+TextColor="Black"
+FontSize="16"
+Margin="0,10,0,0" />
+        <Entry x:Name="EmailEntry" Placeholder="Sähköpostiosoite" PlaceholderColor="Gray"
+BackgroundColor="#f0f0f0"
+TextColor="Black"
+FontSize="16"
+Margin="0,10,0,0" />
+        <Button Text="Lisää käyttäjä" Clicked="Button_Clicked"/>
     </StackLayout>
 </ContentPage>

@@ -4,8 +4,8 @@
              x:Class="TreeniTavoiteMobiiliAPP.GoalPage"
              Title="GoalPage">
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Treeni APP" HorizontalTextAlignment="Center" TextColor="White" FontSize="28"/>
+        <Frame Padding="24" CornerRadius="0">
+            <Label Text="Treeni APP" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold,Italic" FontSize="34"/>
         </Frame>
 
 
@@ -15,22 +15,23 @@
 
 
 
-       
+
 
         <ListView x:Name="goalList" SelectionMode="Single">
             <ListView.ItemTemplate>
                 <DataTemplate>
-
-                    <TextCell Text="{Binding GoalName}"/>
-
+                    <ViewCell>
+                        <StackLayout Padding="10" BackgroundColor="{Binding BackgroundColor}">
+                            <Label Text="{Binding GoalName}" FontSize="Medium" />
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-
         </ListView>
 
-        
 
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0, 40, 0, 30">
+
+        <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="0, 40, 0, 30">
             <Button x:Name="addexercise" Text="Tee harjoitus" Clicked="addexercise_Clicked"></Button>
             <Button x:Name="reached" Margin="10, 0, 0, 0" Text="Tarkastele jo saavutettuja tavoitteita" Clicked="ReachedGoals_Clicked"></Button>
             <Button x:Name="addnew" Margin="10, 0, 0, 0" Text="Aseta uusi tavoite" Clicked="addnew_Clicked"></Button>
