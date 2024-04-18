@@ -66,7 +66,7 @@ namespace TreeniTavoiteMobiiliAPP
             {
 
                 int id = us.UserId;
-                await DisplayAlert("Valittu käyttäjä", $"Valittu käyttäjä ID: {us.UserId}", "OK"); //lähinnä debuggausta varten, varmistetaan että id kulkee mukana
+                //await DisplayAlert("Valittu käyttäjä", $"Valittu käyttäjä ID: {us.UserId}", "OK"); //lähinnä debuggausta varten, varmistetaan että id kulkee mukana
                 await Navigation.PushAsync(new GoalPage(id)); // Navigoidaan uudelle sivulle tavoitteen lisäystä varten, mukana valitun käyttäjän userID
             }
 

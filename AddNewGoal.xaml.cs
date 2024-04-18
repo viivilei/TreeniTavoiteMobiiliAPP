@@ -12,32 +12,32 @@ public partial class AddNewGoal : ContentPage
 
     private int userId;
 
-    public AddNewGoal(int userId) 
+    public AddNewGoal(int userId) //parametrina tuotu valitun käyttäjän userID
     {
         InitializeComponent();
         this.userId = userId;
         //varmistaa, että on varmasti oikea henkilö jolle lisätään uutta tavoitetta, voi myös laittaa kommentointiin koska tämä lähinnä debuggausta varten
-        DisplayAlert("Valittu käyttäjä", $"Valittu käyttäjä ID: {userId}", "OK");
+        //DisplayAlert("Valittu käyttäjä", $"Valittu käyttäjä ID: {userId}", "OK");
 
     }
 
     async void Button_Clicked(object sender, EventArgs e)
     {
-        //hakee tiedon tekstikentistä
+        //hakee käyttäjän syöttämän tiedon tekstikentistä
         string goalName = goalNameEntry.Text;
         string notes = notesEntry.Text;
 
-        // Tässä rakentuu uusi tavoite-olio
+        // Uusi tavoite-olio
 
         Goal newGoal = new Goal
         {
-            UserId = userId,
+            UserId = userId, //arvo tulee mukana tuodusta userID:stä suoraan
             GoalName = goalName,
             Notes = notes,
-            Reached = false // Oletusarvoisesti false, koska uusi Goal ei ole saavutettu vielä
+            Reached = false // Oletusarvoisesti false, koska uutta tavoitetta ei ole vielä saavutettu
         };
 
-        // Lähetetään uusi Goal backendiin
+        // Lähetetään uusi tavoite backendiin
         var httpClient = new HttpClient();
         var url = "https://treenidbbackend20240415080224.azurewebsites.net/api/goals";
         var json = JsonConvert.SerializeObject(newGoal);

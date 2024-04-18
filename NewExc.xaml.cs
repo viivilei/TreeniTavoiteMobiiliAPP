@@ -16,28 +16,30 @@ public partial class NewExc : ContentPage
         this.userId = userId;
         this.goalId = goalId;
 
-        // Näytä parametrit DisplayAlertilla
-        ShowParameters();
+        // Näytä parametrit DisplayAlertilla, debuggausta varten, onko molemmat parametrit vielä mukana matkassa
+        //ShowParameters();
         GetGoalName();
     }
 
-    private async void ShowParameters()
-    {
+    //private async void ShowParameters() 
+    //{
         // Näytä parametrit käyttäjälle DisplayAlertilla
-        await DisplayAlert("Parametrit", $"userId: {userId}, goalId: {goalId}", "OK");
-    }
+        //await DisplayAlert("Parametrit", $"userId: {userId}, goalId: {goalId}", "OK");
+    //}
 
-    async void Button_Clicked(object sender, EventArgs e)
+    async void Button_Clicked(object sender, EventArgs e) //Lukee käyttäjän syöttämät tiedot tekstikentistä
     {
+        //harjoitus olion luonti
         Exercise newExercise = new Exercise
         {
-            UserId = userId,
-            GoalId = goalId,
+            UserId = userId, //tulee automaattisesti
+            GoalId = goalId, //tulee automaattisesti
             ExName = exerciseNameEntry.Text,
-            Date = DateTime.Now,
+            Date = DateTime.Now, //tulee automaattisesti
             Notes = notesEditor.Text
         };
 
+        //lähetys backendiin
         var httpClient = new HttpClient();
         var url = "https://treenidbbackend20240415080224.azurewebsites.net/api/exercises";
         var json = JsonConvert.SerializeObject(newExercise);
@@ -62,7 +64,7 @@ public partial class NewExc : ContentPage
     async void Button_Clicked_1(object sender, EventArgs e)
     {
 
-        await DisplayAlert("Parametrit", $"userId: {userId}, goalId: {goalId}", "OK");
+        //await DisplayAlert("Parametrit", $"userId: {userId}, goalId: {goalId}", "OK"); jälleen pelkkä tarkistus
 
         try
         {
@@ -104,7 +106,7 @@ public partial class NewExc : ContentPage
         }
     }
 
-    private async Task GetGoalName()
+    private async Task GetGoalName() //hae tavoitteen nimi goalID:n perusteella selvyyden vuoksi
     {
         try
         {

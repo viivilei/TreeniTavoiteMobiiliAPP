@@ -18,7 +18,7 @@ public partial class AddNewUser : ContentPage
         string lastName = LastNameEntry.Text;
         string email = EmailEntry.Text;
 
-        // Luo k‰ytt‰j‰-olio ja lis‰‰ se backendiin
+        // Luo uusi k‰ytt‰j‰-olio
         var user = new User
         {
             Etunimi = firstName,

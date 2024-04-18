@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
+using System.Xml;
 using TreeniTavoiteMobiiliAPP.Models;
 
 namespace TreeniTavoiteMobiiliAPP
@@ -12,7 +13,7 @@ namespace TreeniTavoiteMobiiliAPP
     {
         int eId;
 
-        public GoalPage(int id)
+        public GoalPage(int id) //mukana tuleva userID
         {
             InitializeComponent();
             eId = id; // Asetetaan id-muuttujan arvo eId-muuttujalle
@@ -22,6 +23,7 @@ namespace TreeniTavoiteMobiiliAPP
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            await GetUserName(); //hakee n‰kyville k‰ytt‰j‰n etunimen userID:n perusteella
             await RefreshGoalList(); // P‰ivitet‰‰n tavoitelista
         }
 
@@ -42,13 +44,13 @@ namespace TreeniTavoiteMobiiliAPP
                 // Deserialisoidaan JSON-data Goal-olioiksi
                 IEnumerable<Goal> goals = JsonConvert.DeserializeObject<Goal[]>(json);
 
-                // Suodatetaan goalit k‰ytt‰j‰ ID:n perusteella ja siten, ett‰ niit‰ ei ole viel‰ saavutettu
+                // Suodatetaan tavoitteet k‰ytt‰j‰ ID:n perusteella ja siten, ett‰ niit‰ ei ole viel‰ saavutettu
                 IEnumerable<Goal> userGoals = goals.Where(goal => goal.UserId == eId && !goal.Reached);
 
                 // Luodaan uusi ObservableCollection suodatetuista goaleista
                 ObservableCollection<Goal> userGoalsCollection = new ObservableCollection<Goal>(userGoals);
 
-                // Asetetaan suodatetut goalit n‰kyviin listalla
+                // Asetetaan suodatetut tavoitteet n‰kyviin listalla
                 goalList.ItemsSource = userGoalsCollection;
 
             }
@@ -62,8 +64,8 @@ namespace TreeniTavoiteMobiiliAPP
         // Metodi, joka suoritetaan kun "Saavutetut tavoitteet" -nappia painetaan
         async void ReachedGoals_Clicked(object sender, EventArgs e)
         {
-            // N‰ytet‰‰n valitun k‰ytt‰j‰n ID
-            await DisplayAlert("Valittu k‰ytt‰j‰", $"Valittu k‰ytt‰j‰ ID: {eId}", "OK");
+            // N‰ytet‰‰n valitun k‰ytt‰j‰n ID (debuggausta varten)
+            //await DisplayAlert("Valittu k‰ytt‰j‰", $"Valittu k‰ytt‰j‰ ID: {eId}", "OK");
             await Navigation.PushAsync(new ReachedGoals(eId));
         }
 
@@ -71,7 +73,7 @@ namespace TreeniTavoiteMobiiliAPP
         async void addnew_Clicked(object sender, EventArgs e)
         {
             // N‰ytet‰‰n valitun k‰ytt‰j‰n ID
-            await DisplayAlert("Valittu k‰ytt‰j‰", $"Valittu k‰ytt‰j‰ ID: {eId}", "OK");
+            //await DisplayAlert("Valittu k‰ytt‰j‰", $"Valittu k‰ytt‰j‰ ID: {eId}", "OK");
             await Navigation.PushAsync(new AddNewGoal(eId)); // Navigoidaan uudelle sivulle
         }
 
@@ -90,7 +92,7 @@ namespace TreeniTavoiteMobiiliAPP
 
                 if (confirm)
                 {
-                    // Merkitse tavoite saavutetuksi palvelimella
+                    // Merkitse tavoite saavutetuksi backendiss‰
                     var httpClient = new HttpClient();
                     var url = $"https://treenidbbackend20240415080224.azurewebsites.net/api/goals/SetReached/{selectedGoal.GoalId}";
 
@@ -102,7 +104,7 @@ namespace TreeniTavoiteMobiiliAPP
                             // Onnitteluviesti, kun tavoite on saavutettu
                             await DisplayAlert("Onnittelut!", $"Tavoite '{selectedGoal.GoalName}' on nyt saavutettu!", "OK");
 
-                            // P‰ivit‰ k‰yttˆliittym‰
+                            // P‰ivit‰ sivu
                             await RefreshGoalList();
                         }
                         else
@@ -129,8 +131,8 @@ namespace TreeniTavoiteMobiiliAPP
                 // Haetaan valitun tavoitteen tiedot
                 Goal selectedGoal = (Goal)goalList.SelectedItem;
 
-                // N‰ytet‰‰n valitun k‰ytt‰j‰n ja tavoitteen ID:t
-                await DisplayAlert("Valittu k‰ytt‰j‰ ja tavoite", $"Valittu k‰ytt‰j‰ ID: {eId}\nValittu tavoite ID: {selectedGoal.GoalId}", "OK");
+                // N‰ytet‰‰n valitun k‰ytt‰j‰n ja tavoitteen ID:t, l‰hinn‰ varmistusta varten, voi kommentoida
+                //await DisplayAlert("Valittu k‰ytt‰j‰ ja tavoite", $"Valittu k‰ytt‰j‰ ID: {eId}\nValittu tavoite ID: {selectedGoal.GoalId}", "OK");
 
                 // Navigoidaan uudelle sivulle ja v‰litet‰‰n parametreina k‰ytt‰j‰n ID ja tavoitteen ID
                 await Navigation.PushAsync(new NewExc(eId, selectedGoal.GoalId));
@@ -138,6 +140,24 @@ namespace TreeniTavoiteMobiiliAPP
             else
             {
                 await DisplayAlert("Virhe", "Valitse ensin tavoite", "OK");
+            }
+        }
+
+        private async Task GetUserName() //Metodi jolla haetaan k‰ytt‰j‰nimi n‰kyville userId:n perusteella, selvyyden vuoksi
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("https://treenidbbackend20240415080224.azurewebsites.net/");
+                string json = await client.GetStringAsync($"api/users/{eId}"); // Hae k‰ytt‰j‰n tiedot userId:n perusteella
+                User user = JsonConvert.DeserializeObject<User>(json);
+
+                // N‰yt‰ k‰ytt‰j‰n etunimi labelissa
+                nameLabel.Text = $"K‰ytt‰j‰n {user.Etunimi} asettamat tavoitteet";
+            }
+            catch (Exception e)
+            {
+                await DisplayAlert("Virhe", e.Message.ToString(), "OK");
             }
         }
     }

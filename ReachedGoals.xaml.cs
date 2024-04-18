@@ -9,7 +9,7 @@ public partial class ReachedGoals : ContentPage
 {
     private int userId;
 
-    public ReachedGoals(int userId)
+    public ReachedGoals(int userId) //Saavutetut tavoitteet haetaan k‰ytt‰j‰ID:n perusteella
     {
         InitializeComponent();
         this.userId = userId;
@@ -22,7 +22,7 @@ public partial class ReachedGoals : ContentPage
         await GetGoalList(); // Hae k‰ytt‰j‰n saavutetut tavoitteet
     }
 
-    private async Task GetUserName()
+    private async Task GetUserName() //metodi k‰ytt‰j‰n etunimen n‰ytt‰miseksi
     {
         try
         {
@@ -40,7 +40,7 @@ public partial class ReachedGoals : ContentPage
         }
     }
 
-    private async Task GetGoalList()
+    private async Task GetGoalList() //Metodi, jolla haetaan back endist‰ n‰kyviin tavoitteet Reached true ja valitulla userID:ll‰
     {
         try
         {
