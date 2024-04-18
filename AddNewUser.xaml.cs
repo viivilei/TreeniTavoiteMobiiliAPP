@@ -41,9 +41,10 @@ public partial class AddNewUser : ContentPage
                 if (response.IsSuccessStatusCode)
                 {
                     await DisplayAlert("Onnistui", "Uusi k‰ytt‰j‰ lis‰tty onnistuneesti", "OK");
-                    
-                    // Navigoidaan takaisin k‰ytt‰j‰listaukseen
-                    await Navigation.PopAsync();
+
+                    //p‰ivit‰ k‰ytt‰j‰sivu uuden k‰ytt‰j‰n lis‰‰misen j‰lkeen
+                    var userPage = new UserPage();
+                    await Navigation.PushAsync(userPage);
                 }
                 else
                 {
