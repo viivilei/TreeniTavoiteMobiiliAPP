@@ -17,7 +17,7 @@ namespace TreeniTavoiteMobiiliAPP
 
 
 
-            //Annetaan latausilmoitus
+            //Annetaan latausilmoitus, jos käyttäjien haku backendistä kestää kauan
             user_lataus.Text = "Ladataan käyttäjiä...";
 
         }

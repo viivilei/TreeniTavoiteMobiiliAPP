@@ -2,7 +2,7 @@
 {
     public partial class App : Application
     {
-        public App()
+        public App() //sovelluksen aloitussivuksi asetettu käyttäjä-sivu
         {
             InitializeComponent();
 

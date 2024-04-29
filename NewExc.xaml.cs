@@ -9,7 +9,7 @@ public partial class NewExc : ContentPage
     private int userId;
     private int goalId;
 
-    public NewExc(int userId, int goalId)
+    public NewExc(int userId, int goalId) //mukana käyttäjän userId ja valitun tavoitteen ID
     {
         InitializeComponent();
 

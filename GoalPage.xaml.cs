@@ -66,7 +66,7 @@ namespace TreeniTavoiteMobiiliAPP
         {
             // N‰ytet‰‰n valitun k‰ytt‰j‰n ID (debuggausta varten)
             //await DisplayAlert("Valittu k‰ytt‰j‰", $"Valittu k‰ytt‰j‰ ID: {eId}", "OK");
-            await Navigation.PushAsync(new ReachedGoals(eId));
+            await Navigation.PushAsync(new ReachedGoals(eId)); //navigoi sivulle, jossa luettelo saavutetuista tavoitteista
         }
 
         // Metodi, joka suoritetaan kun "Aseta uusi tavoite" -nappia painetaan
